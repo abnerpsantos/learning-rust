@@ -1,5 +1,3 @@
-use std::str;
-
 fn main() {
     about_scopes();
     println!();
@@ -50,13 +48,41 @@ fn about_references() {
 
     {
         let takes_ownership = &mut_string;
-        println!("Use the symbol ampersand (&) to create a reference...");
+        println!("Use the symbol amperstand (&) to create a reference...");
         println!();
 
         println!("Now takes_ownership and mut_string are usable at same time. takes_ownership is a immutable reference!!");
         println!("takes_ownership = '{takes_ownership}' and mut_string = '{mut_string}'");
-        
+
         println!();
         println!("With this reference, when rust drop takes_ownership, there is no need to pass ownership back to mut_string")
+    }
+    {
+        println!();
+        println!("You can't mutate a immutable reference.");
+        println!("But there is a way to create mutable references.");
+
+        let mutable_borrow_variable = &mut mut_string; // mut_string must be declared as let mut
+                                                       // mutable_borrow_variable.push_str(" This can be mutable");
+                                                       // this mutate the original variable mut_string!!
+        println!("{0}", mutable_borrow_variable);
+    }
+    {
+        println!();
+        println!("You can have any amount of immutable references as you need, but only one mutable reference");
+
+        let immutable_one = &mut_string;
+        let immutable_two = &mut_string;
+        let immutable_three = &mut_string;
+        //let mutable_reference = &mut mut_string; <- This after three immutable references will throw a compiler error because the refs will be used
+
+        println!(
+            " immut one: {0}\n immut two: {1}\n immut three: {2}",
+            immutable_one, immutable_two, immutable_three
+        );
+
+        let mutable_reference = &mut mut_string;
+        mutable_reference.push_str("Pushed String");
+        println!(" Now you can use a mutable reference if there's no immutable reference being used or will be used later, {mutable_reference}")
     }
 }
