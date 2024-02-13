@@ -4,6 +4,8 @@ fn main() {
     about_scopes();
     println!();
     about_ownership()
+    println!();
+    about_references();
 }
 
 
@@ -40,4 +42,21 @@ fn about_ownership() {
     
     println!("{mut_string}");
 
+}
+
+fn about_references() {
+    println!("To avoid some problems with ownership we can use references...");
+    let mut mut_string = String::from("Another imutable string");
+
+    {
+        let takes_ownership = &mut_string;
+        println!("Use the symbol ampersand (&) to create a reference...");
+        println!();
+
+        println!("Now takes_ownership and mut_string are usable at same time. takes_ownership is a immutable reference!!");
+        println!("takes_ownership = '{takes_ownership}' and mut_string = '{mut_string}'");
+        
+        println!();
+        println!("With this reference, when rust drop takes_ownership, there is no need to pass ownership back to mut_string")
+    }
 }
