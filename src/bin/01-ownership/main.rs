@@ -1,7 +1,7 @@
 fn main() {
     about_scopes();
     println!();
-    about_ownership()
+    about_ownership();
     println!();
     about_references();
 }
@@ -62,7 +62,7 @@ fn about_references() {
         println!("You can't mutate a immutable reference.");
         println!("But there is a way to create mutable references.");
 
-        let mutable_borrow_variable = &mut mut_string; // mut_string must be declared as let mut
+        let mutable_borrow_variable: &mut String = &mut mut_string; // mut_string must be declared as let mut
                                                        // mutable_borrow_variable.push_str(" This can be mutable");
                                                        // this mutate the original variable mut_string!!
         println!("{0}", mutable_borrow_variable);
@@ -81,7 +81,7 @@ fn about_references() {
             immutable_one, immutable_two, immutable_three
         );
 
-        let mutable_reference = &mut mut_string;
+        let mutable_reference: &mut String = &mut mut_string;
         mutable_reference.push_str("Pushed String");
         println!(" Now you can use a mutable reference if there's no immutable reference being used or will be used later, {mutable_reference}")
     }
