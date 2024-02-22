@@ -6,7 +6,8 @@ struct User {
 }
 
 fn main(){
-    about_structs();
+    // about_structs();
+    tuple_structs();
 }
 
 #[allow(dead_code)]
@@ -44,4 +45,18 @@ fn about_structs() {
     println!("name: {0}, age: {1}, is logged? {2}", abner.name, abner.age, abner.logged_in );
     abner.logged_in = true;
     println!("name: {0}, age: {1}, is logged? {2}", abner.name, abner.age, abner.logged_in );
+}
+
+#[allow(dead_code)]
+fn tuple_structs() {
+    struct Color(i32, i32, i32);
+    struct Point(i32, i32, i32);
+
+    let _black = Color(0, 0, 0);
+    let _origin = Point(0, 0, 0);
+
+    /*
+    Note that the black and origin values are different types because they’re instances of different tuple structs. Each struct you define is its own type, even though the fields within the struct might have the same types. For example, a function that takes a parameter of type Color cannot take a Point as an argument, even though both types are made up of three i32 values. Otherwise, tuple struct instances are similar to tuples in that you can destructure them into their individual pieces, and you can use a . followed by the index to access an individual value.
+     */
+
 }
