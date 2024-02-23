@@ -1,4 +1,3 @@
-
 struct User {
     name: String,
     age: i32,
@@ -7,7 +6,8 @@ struct User {
 
 fn main(){
     // about_structs();
-    tuple_structs();
+    // tuple_structs();
+    method_syntax();
 }
 
 #[allow(dead_code)]
@@ -52,11 +52,40 @@ fn tuple_structs() {
     struct Color(i32, i32, i32);
     struct Point(i32, i32, i32);
 
-    let _black = Color(0, 0, 0);
-    let _origin = Point(0, 0, 0);
+    let _black: Color = Color(0, 0, 0);
+    let _origin: Point = Point(0, 0, 0);
 
     /*
-    Note that the black and origin values are different types because they’re instances of different tuple structs. Each struct you define is its own type, even though the fields within the struct might have the same types. For example, a function that takes a parameter of type Color cannot take a Point as an argument, even though both types are made up of three i32 values. Otherwise, tuple struct instances are similar to tuples in that you can destructure them into their individual pieces, and you can use a . followed by the index to access an individual value.
+    Note that the black and origin values are different types because they’re instances of different tuple structs. 
+    Each struct you define is its own type, even though the fields within the struct might have the same types. 
+    For example, a function that takes a parameter of type Color cannot take a Point as an argument, even though both types are made up of three i32 values. 
+    Otherwise, tuple struct instances are similar to tuples in that you can destructure them into their individual pieces, and you can use a . (dot) followed by the index to access an individual value.
      */
 
+}
+
+#[allow(dead_code)]
+fn method_syntax() {
+ /*
+ Methods are similar to functions: we declare them with the fn keyword and a name, they can have parameters and a return value, and they contain some code that’s run when the method is called from somewhere else.
+ Unlike functions, methods are defined within the context of a struct (or an enum or a trait object
+  */
+
+  struct Rectangle {
+    width: u32,
+    heigth: u32,
+  }
+
+  impl Rectangle {
+    fn area(&self) -> u32 {
+        self.heigth * self.width
+    }
+  }
+
+  let rect_one: Rectangle = Rectangle {
+    width: 5,
+    heigth: 5
+  };
+
+  println!("the area of a rectangle with width: {0} and height: {1} is {2}", rect_one.width, rect_one.heigth, rect_one.area())
 }
