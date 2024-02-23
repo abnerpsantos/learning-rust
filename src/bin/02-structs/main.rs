@@ -7,7 +7,8 @@ struct User {
 fn main(){
     // about_structs();
     // tuple_structs();
-    method_syntax();
+    // method_syntax();
+    method_syntax_exercise();
 }
 
 #[allow(dead_code)]
@@ -73,19 +74,52 @@ fn method_syntax() {
 
   struct Rectangle {
     width: u32,
-    heigth: u32,
+    height: u32,
   }
 
   impl Rectangle {
     fn area(&self) -> u32 {
-        self.heigth * self.width
+        self.height * self.width
     }
   }
 
   let rect_one: Rectangle = Rectangle {
     width: 5,
-    heigth: 5
+    height: 5
   };
 
-  println!("the area of a rectangle with width: {0} and height: {1} is {2}", rect_one.width, rect_one.heigth, rect_one.area())
+  println!("the area of a rectangle with width: {0} and height: {1} is {2}", rect_one.width, rect_one.height, rect_one.area())
+}
+
+#[allow(dead_code)]
+fn method_syntax_exercise() {
+    struct Rectangle {
+        width: u32,
+        height: u32
+    }
+
+    impl Rectangle {
+        fn area(&self) -> u32 {
+            self.width * self.height
+        }
+        fn can_hold(&self, rectangle: &Rectangle) -> bool {
+            self.area() > rectangle.area()
+        }
+    }
+
+    let rect1: Rectangle = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    let rect2: Rectangle = Rectangle {
+        width: 10,
+        height: 40,
+    };
+    let rect3: Rectangle = Rectangle {
+        width: 60,
+        height: 45,
+    };
+
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
 }
