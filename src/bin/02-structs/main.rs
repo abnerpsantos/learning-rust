@@ -1,19 +1,20 @@
-struct User {
-    name: String,
-    age: i32,
-    logged_in: bool,
-}
 
 fn main(){
-    // about_structs();
-    // tuple_structs();
-    // method_syntax();
+    about_structs();
+    tuple_structs();
+    method_syntax();
     method_syntax_exercise();
+    about_constructor_functions();
 }
 
 #[allow(dead_code)]
 fn about_structs() {
     println!("Structs are similar to tuples, both can hold multiple related values, but for structs you need to name the fields");
+    struct User {
+        name: String,
+        age: i32,
+        logged_in: bool,
+    }
 
     let abner: User = User {
         age: 23,
@@ -122,4 +123,45 @@ fn method_syntax_exercise() {
 
     println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
     println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+}
+
+#[allow(dead_code)]
+fn about_constructor_functions () {
+    println!("All functions defined within a implementation block (impl) are called associated funcions.");
+    println!("Functions that do not need the self parameter, and thus are not methods, often are used as constructor functions");
+    println!("Constructor function returns a new instance of the struct.");
+
+    struct Rectangle {
+        width: u32,
+        height: u32,
+    }
+
+    impl Rectangle {
+        fn new(width: u32, height: u32) -> Self {
+            Self {
+                width,
+                height
+            }
+        }
+        fn area(&self) -> u32 {
+            self.width * self.height
+        }
+        fn can_hold(&self, rectangle: &Rectangle) -> bool {
+            self.area() > rectangle.area()
+        }
+    }
+
+    /*
+    creating a rectangle instance was:
+        let rect1: Rectangle = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    instead you can use the constructor function:
+
+     */
+    let rect_one: Rectangle = Rectangle::new(30,50);
+    let rect_two: Rectangle = Rectangle::new(10, 40);
+
+    println!("Can rect1 hold rect2? {}", rect_one.can_hold(&rect_two));
 }
