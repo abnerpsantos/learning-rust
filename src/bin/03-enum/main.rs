@@ -70,5 +70,21 @@ fn storing_data_in_enum() {
     let loopback: IpAddrKindData = IpAddrKindData::V6(String::from("::1"));
 
     println!("{:?}", home);
-    println!("{:?}", loopback)
+    println!("{:?}", loopback);
+
+    println!("We can create more complex enums...");
+
+    #[derive(Debug)]
+    enum Message {
+        QuitMessage,
+        MoveMessage {
+            x: i32,
+            y: i32
+        },
+        WriteMessage(String),
+        ChangeColorMessage(i32, i32, i32)
+    }
+
+    let m: Message = Message::WriteMessage(String::from("Hello"));
+    println!("{:?}", m);
 }
