@@ -1,6 +1,7 @@
 fn main() {
     // match_control_flow();
-    acessing_enum_states();
+    // acessing_enum_states();
+    about_option_enum();
 }
 
 #[allow(dead_code)]
@@ -69,4 +70,23 @@ fn acessing_enum_states() {
 
     get_state_info(sao_paulo_object);
     get_state_info(rio_de_janeiro_object);
+}
+
+#[allow(dead_code)]
+fn about_option_enum() {
+    println!("Let’s say we want to write a function that takes an Option<i32> and, if there’s a value inside, adds 1 to that value.");
+    println!("If there isn’t a value inside, the function should return the None value and not attempt to perform any operations.");
+
+    fn plus_one(x: Option<i32>) -> Option<i32> {
+        match x {
+            None => None,
+            Some(i) => Some(i + 1),
+        }
+    }
+
+    let five: Option<i32> = Some(5);
+    let six: Option<i32> = plus_one(five);
+    let none: Option<i32> = plus_one(None);
+
+    println!("{:#?}{:#?}{:#?}", five, six, none)
 }
