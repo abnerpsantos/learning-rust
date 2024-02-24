@@ -1,7 +1,8 @@
 fn main() {
 
     // defining_enum();
-    storing_data_in_enum();
+    // storing_data_in_enum();
+    implementation_block_in_enum();
 }
 
 #[allow(dead_code)]
@@ -87,4 +88,27 @@ fn storing_data_in_enum() {
 
     let m: Message = Message::WriteMessage(String::from("Hello"));
     println!("{:?}", m);
+}
+
+#[allow(dead_code)]
+fn implementation_block_in_enum() {
+    #[derive(Debug)]
+    enum Message {
+        QuitMessage,
+        MoveMessage {
+            x: i32,
+            y: i32
+        },
+        WriteMessage(String),
+        ChangeColorMessage(i32, i32, i32)
+    }
+
+    impl Message {
+        fn call(&self) {
+            println!("{:?}", self)
+        }
+    }
+    
+    let m: Message = Message::WriteMessage(String::from("Hello"));
+    m.call()
 }
