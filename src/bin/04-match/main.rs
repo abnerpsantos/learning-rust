@@ -1,7 +1,8 @@
 fn main() {
     // match_control_flow();
     // acessing_enum_states();
-    about_option_enum();
+    // about_option_enum();
+    using_if_let();
 }
 
 #[allow(dead_code)]
@@ -89,4 +90,23 @@ fn about_option_enum() {
     let none: Option<i32> = plus_one(None);
 
     println!("{:#?}{:#?}{:#?}", five, six, none)
+}
+
+#[allow(dead_code)]
+fn using_if_let() {
+  println!("If you want to match only one pattern while ignore the rest you can use if let, it's less verbose and easier to read");
+
+  /*
+  Unless doing this:
+    let config_max = Some(3u8);
+    match config_max {
+        Some(max) => println!("The maximum is configured to be {}", max),
+        _ => println!("None"),
+    }
+    do this:
+   */
+  let config_max: Option<u8> = Some(3u8);
+  if let Some(max) = config_max {
+    println!("The maximum is configured to be {}", max)
+  }
 }
