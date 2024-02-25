@@ -1,5 +1,5 @@
 pub mod lessons;
 
 fn main() {
-println!("Started to use modules!");
+    lessons::class_05_collections::about_vectors()
 }
