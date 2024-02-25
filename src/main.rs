@@ -1,4 +1,5 @@
+pub mod lessons;
+
 fn main() {
-    println!("Hello, world!");
-    
+println!("Started to use modules!");
 }

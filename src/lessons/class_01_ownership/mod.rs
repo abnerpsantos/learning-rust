@@ -1,12 +1,5 @@
-fn main() {
-    // about_scopes();
-    // about_ownership();
-    // about_references();
-    about_slice_type();
-}
-
 #[allow(dead_code)]
-fn about_scopes() {
+pub fn about_scopes() {
     let x: i32  = 1;
     println!("scope: 01 - x = {x}, X is available here because it's pertencent to this scope! ");
     {
@@ -22,7 +15,7 @@ fn about_scopes() {
 }
 
 #[allow(dead_code)]
-fn about_ownership() {
+pub fn about_ownership() {
     let _imut_string: &str = "This hardcoded string is immutable!";
     let mut mut_string: String = String::from("This string is a mutable string");
 
@@ -43,7 +36,7 @@ fn about_ownership() {
 }
 
 #[allow(dead_code)]
-fn about_references() {
+pub fn about_references() {
     println!("To avoid some problems with ownership we can use references...");
     let mut mut_string = String::from("Another imutable string");
 
@@ -93,7 +86,7 @@ fn about_references() {
 }
 
 #[allow(dead_code)]
-fn about_slice_type() {
+pub fn about_slice_type() {
     println!("Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection. A slice is a kind of reference, so it does not have ownership.");
 
     let str_slice_01: &str = "Slice Type";  // This string are stored on the binary, so str_slice_(01/02) points to the address of this string
@@ -117,11 +110,11 @@ fn about_slice_type() {
 
     println!("String Slices as parameters makes our API's more genral...");
 
-    fn get_string(string: &String) {
+    pub fn get_string(string: &String) {
         println!("{string} typed as &String");
     }
 
-    fn get_string_slice(string: &str) {
+    pub fn get_string_slice(string: &str) {
         println!("{string} typed as &str");
     }
 

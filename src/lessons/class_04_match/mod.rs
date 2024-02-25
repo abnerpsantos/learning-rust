@@ -1,12 +1,5 @@
-fn main() {
-    // match_control_flow();
-    // acessing_enum_states();
-    // about_option_enum();
-    using_if_let();
-}
-
 #[allow(dead_code)]
-fn match_control_flow() {
+pub fn match_control_flow() {
     println!("Rust has an extremely powerful control flow construct called match that allows you to compare a value against a series of patterns and then execute code based on which pattern matches.");
     println!("The power of match comes from the expressiveness of the patterns and the fact that the compiler confirms that all possible cases are handled.");
 
@@ -33,7 +26,7 @@ fn match_control_flow() {
 }
 
 #[allow(dead_code)]
-fn acessing_enum_states() {
+pub fn acessing_enum_states() {
     println!("With match statements we can acess data inside enums...");
 
     #[allow(dead_code)]
@@ -74,7 +67,7 @@ fn acessing_enum_states() {
 }
 
 #[allow(dead_code)]
-fn about_option_enum() {
+pub fn about_option_enum() {
     println!("Let’s say we want to write a function that takes an Option<i32> and, if there’s a value inside, adds 1 to that value.");
     println!("If there isn’t a value inside, the function should return the None value and not attempt to perform any operations.");
 
@@ -93,20 +86,20 @@ fn about_option_enum() {
 }
 
 #[allow(dead_code)]
-fn using_if_let() {
-  println!("If you want to match only one pattern while ignore the rest you can use if let, it's less verbose and easier to read");
+pub fn using_if_let() {
+    println!("If you want to match only one pattern while ignore the rest you can use if let, it's less verbose and easier to read");
 
-  /*
-  Unless doing this:
-    let config_max = Some(3u8);
-    match config_max {
-        Some(max) => println!("The maximum is configured to be {}", max),
-        _ => println!("None"),
+    /*
+    Unless doing this:
+      let config_max = Some(3u8);
+      match config_max {
+          Some(max) => println!("The maximum is configured to be {}", max),
+          _ => println!("None"),
+      }
+      do this:
+     */
+    let config_max: Option<u8> = Some(3u8);
+    if let Some(max) = config_max {
+        println!("The maximum is configured to be {}", max)
     }
-    do this:
-   */
-  let config_max: Option<u8> = Some(3u8);
-  if let Some(max) = config_max {
-    println!("The maximum is configured to be {}", max)
-  }
 }

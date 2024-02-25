@@ -1,14 +1,5 @@
-
-fn main(){
-    about_structs();
-    tuple_structs();
-    method_syntax();
-    method_syntax_exercise();
-    about_constructor_functions();
-}
-
 #[allow(dead_code)]
-fn about_structs() {
+pub fn about_structs() {
     println!("Structs are similar to tuples, both can hold multiple related values, but for structs you need to name the fields");
     struct User {
         name: String,
@@ -50,7 +41,7 @@ fn about_structs() {
 }
 
 #[allow(dead_code)]
-fn tuple_structs() {
+pub fn tuple_structs() {
     struct Color(i32, i32, i32);
     struct Point(i32, i32, i32);
 
@@ -67,9 +58,9 @@ fn tuple_structs() {
 }
 
 #[allow(dead_code)]
-fn method_syntax() {
+pub fn method_syntax() {
  /*
- Methods are similar to functions: we declare them with the fn keyword and a name, they can have parameters and a return value, and they contain some code that’s run when the method is called from somewhere else.
+ Methods are similar to functions: we declare them with the pub fn keyword and a name, they can have parameters and a return value, and they contain some code that’s run when the method is called from somewhere else.
  Unlike functions, methods are defined within the context of a struct (or an enum or a trait object
   */
 
@@ -79,7 +70,7 @@ fn method_syntax() {
   }
 
   impl Rectangle {
-    fn area(&self) -> u32 {
+    pub fn area(&self) -> u32 {
         self.height * self.width
     }
   }
@@ -93,17 +84,17 @@ fn method_syntax() {
 }
 
 #[allow(dead_code)]
-fn method_syntax_exercise() {
+pub fn method_syntax_exercise() {
     struct Rectangle {
         width: u32,
         height: u32
     }
 
     impl Rectangle {
-        fn area(&self) -> u32 {
+        pub fn area(&self) -> u32 {
             self.width * self.height
         }
-        fn can_hold(&self, rectangle: &Rectangle) -> bool {
+        pub fn can_hold(&self, rectangle: &Rectangle) -> bool {
             self.area() > rectangle.area()
         }
     }
@@ -126,7 +117,7 @@ fn method_syntax_exercise() {
 }
 
 #[allow(dead_code)]
-fn about_constructor_functions () {
+pub fn about_constructor_functions () {
     println!("All functions defined within a implementation block (impl) are called associated funcions.");
     println!("Functions that do not need the self parameter, and thus are not methods, often are used as constructor functions");
     println!("Constructor function returns a new instance of the struct.");
@@ -137,16 +128,16 @@ fn about_constructor_functions () {
     }
 
     impl Rectangle {
-        fn new(width: u32, height: u32) -> Self {
+        pub fn new(width: u32, height: u32) -> Self {
             Self {
                 width,
                 height
             }
         }
-        fn area(&self) -> u32 {
+        pub fn area(&self) -> u32 {
             self.width * self.height
         }
-        fn can_hold(&self, rectangle: &Rectangle) -> bool {
+        pub fn can_hold(&self, rectangle: &Rectangle) -> bool {
             self.area() > rectangle.area()
         }
     }

@@ -1,12 +1,5 @@
-fn main() {
-
-    // defining_enum();
-    // storing_data_in_enum();
-    implementation_block_in_enum();
-}
-
 #[allow(dead_code)]
-fn defining_enum() {
+pub fn defining_enum() {
     println!("While structs give you a way of grouping related fiedls and data");
     println!("Enums give you a way of say a value is one of all posible values");
 
@@ -28,7 +21,7 @@ fn defining_enum() {
     both variables are typed as IpAddrKind, so if a function receive it's data type, both variables can be used.
      */
 
-    fn get_ip(ip: IpAddrKind) {
+    pub fn get_ip(ip: IpAddrKind) {
         println!("{:?}", ip)
     }
 
@@ -37,7 +30,7 @@ fn defining_enum() {
 }
 
 #[allow(dead_code)]
-fn storing_data_in_enum() {
+pub fn storing_data_in_enum() {
     println!("We can store data in structs as we already know...");
     enum IpAddrKind {
         V4,
@@ -91,7 +84,7 @@ fn storing_data_in_enum() {
 }
 
 #[allow(dead_code)]
-fn implementation_block_in_enum() {
+pub fn implementation_block_in_enum() {
     #[derive(Debug)]
     enum Message {
         QuitMessage,
@@ -104,7 +97,7 @@ fn implementation_block_in_enum() {
     }
 
     impl Message {
-        fn call(&self) {
+        pub fn call(&self) {
             println!("{:?}", self)
         }
     }
