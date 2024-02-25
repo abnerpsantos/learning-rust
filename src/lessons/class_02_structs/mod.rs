@@ -91,10 +91,10 @@ pub fn method_syntax_exercise() {
     }
 
     impl Rectangle {
-        pub fn area(&self) -> u32 {
+        fn area(&self) -> u32 {
             self.width * self.height
         }
-        pub fn can_hold(&self, rectangle: &Rectangle) -> bool {
+        fn can_hold(&self, rectangle: &Rectangle) -> bool {
             self.area() > rectangle.area()
         }
     }
@@ -128,16 +128,16 @@ pub fn about_constructor_functions () {
     }
 
     impl Rectangle {
-        pub fn new(width: u32, height: u32) -> Self {
+        fn new(width: u32, height: u32) -> Self {
             Self {
                 width,
                 height
             }
         }
-        pub fn area(&self) -> u32 {
+        fn area(&self) -> u32 {
             self.width * self.height
         }
-        pub fn can_hold(&self, rectangle: &Rectangle) -> bool {
+        fn can_hold(&self, rectangle: &Rectangle) -> bool {
             self.area() > rectangle.area()
         }
     }

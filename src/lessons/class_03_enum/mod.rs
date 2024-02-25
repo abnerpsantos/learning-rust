@@ -21,7 +21,7 @@ pub fn defining_enum() {
     both variables are typed as IpAddrKind, so if a function receive it's data type, both variables can be used.
      */
 
-    pub fn get_ip(ip: IpAddrKind) {
+    fn get_ip(ip: IpAddrKind) {
         println!("{:?}", ip)
     }
 
@@ -97,7 +97,7 @@ pub fn implementation_block_in_enum() {
     }
 
     impl Message {
-        pub fn call(&self) {
+        fn call(&self) {
             println!("{:?}", self)
         }
     }

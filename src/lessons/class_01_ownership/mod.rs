@@ -110,11 +110,11 @@ pub fn about_slice_type() {
 
     println!("String Slices as parameters makes our API's more genral...");
 
-    pub fn get_string(string: &String) {
+    fn get_string(string: &String) {
         println!("{string} typed as &String");
     }
 
-    pub fn get_string_slice(string: &str) {
+    fn get_string_slice(string: &str) {
         println!("{string} typed as &str");
     }
 
