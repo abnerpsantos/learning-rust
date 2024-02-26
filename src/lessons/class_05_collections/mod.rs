@@ -27,3 +27,20 @@ pub fn about_vectors() {
     println!("{:#?},{:#?}", v3, v3_01)
 
 }
+
+#[allow(dead_code)]
+pub fn iterating_over_vectors() {
+    println!("We can iterate over a vector with for loops...");
+    let v: Vec<i32> = vec![100, 32, 57];
+    for i in &v {
+        println!("{i}");
+    }
+
+    println!("To iterate over mutable vector a make changes of values we need to use a mut vec and derreference to get the value before change");
+    let mut v: Vec<i32> = vec![100, 32, 57];
+    for i in &mut v {
+        *i += 50;
+    }
+    println!("{:#?}", v)
+
+}
