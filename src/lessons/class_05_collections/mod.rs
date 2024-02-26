@@ -44,3 +44,26 @@ pub fn iterating_over_vectors() {
     println!("{:#?}", v)
 
 }
+
+#[allow(dead_code)]
+pub fn storing_multiple_datatypes() {
+    println!("When we create a vector, it's data type can only be of one type, i32, String, etc. ...");
+    println!("But we can store enums with multiple types in vectors to create a multi data type vector...");
+
+    #[derive(Debug)]
+    struct StructType;
+
+    #[derive(Debug)]
+    enum Types {
+        TString(String),
+        Ti32(i32),
+        TStruct(StructType)
+    }
+
+    let mut vec_of_types: Vec<Types> = Vec::new();
+    vec_of_types.push(Types::TString(String::from("Hello")));
+    vec_of_types.push(Types::Ti32(45));
+    vec_of_types.push(Types::TStruct(StructType));
+
+    println!("{:#?}", vec_of_types)
+}
