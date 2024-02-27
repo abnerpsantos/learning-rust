@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 #[allow(dead_code)]
 pub fn about_vectors() {
     println!("Rust's standard library includes a number of very useful data structures called collections. Most other data types represent one specific value, but collections can contain multiple values.");
@@ -66,4 +68,16 @@ pub fn storing_multiple_datatypes() {
     vec_of_types.push(Types::TStruct(StructType));
 
     println!("{:#?}", vec_of_types)
+}
+
+pub fn about_hash_maps() {
+    println!("With hash maps we can store values with keys associated to them...");
+    println!("The type HashMap<K, V> stores a mapping of keys of type K to values of type V using a hashing function, which determines how it places these keys and values into memory.");
+
+    let mut scores: HashMap<String, i32> = HashMap::new();
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+
+    println!("{:#?}", scores);
 }
