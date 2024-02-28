@@ -81,3 +81,19 @@ pub fn about_hash_maps() {
 
     println!("{:#?}", scores);
 }
+
+#[allow(dead_code)]
+pub fn update_hashmap_based_on_old_val() {
+    println!("Another common use case for hash maps is to look up a key’s value and then update it based on the old value.");
+
+    let text: &str = "hello world wonderful world";
+
+    let mut map: HashMap<&str, i32> = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count: &mut i32 = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:#?}", map);
+}
