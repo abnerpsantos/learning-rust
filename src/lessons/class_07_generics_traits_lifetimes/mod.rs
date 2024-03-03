@@ -83,10 +83,10 @@ pub fn about_traits() {
 
     impl AnimalTraits for Animal {
         fn eat(&self) -> String {
-            format!("{} is eating {}", &self.pet, &self.food)
+            format!("{} is eating {}", self.pet, self.food)
         }
         fn make_sound(&self) -> String {
-            format!("{} does: {}", &self.pet, &self.sound)
+            format!("{} does: {}", self.pet, self.sound)
         }
     }
 
