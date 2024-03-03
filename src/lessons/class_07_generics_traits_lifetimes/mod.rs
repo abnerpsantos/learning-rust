@@ -62,3 +62,52 @@ pub fn about_generics() {
 
     println!("By using generics we can do more with less code!!");
 }
+
+pub fn about_traits() {
+    println!("A trait defines functionality a particular type has and can share with other types.");
+    println!("We can use traits to define shared behavior in an abstract way.");
+    println!("A type's behavior consists of the methods we can call on that type.");
+    println!("Different types share the same behavior if we can call the same methods on all of those types.");
+    println!("Trait definitions are a way to group method signatures together to define a set of behaviors necessary to accomplish some purpose.");
+
+    trait AnimalTraits {
+        fn eat(&self) -> String;
+        fn make_sound(&self) -> String;
+    }
+
+    struct Animal {
+        pet: String,
+        sound: String,
+        food: String,
+    }
+
+    impl AnimalTraits for Animal {
+        fn eat(&self) -> String {
+            format!("{} is eating {}", &self.pet, &self.food)
+        }
+        fn make_sound(&self) -> String {
+            format!("{} does: {}", &self.pet, &self.sound)
+        }
+    }
+
+    let dog: Animal = Animal {
+        pet: String::from("Dog"),
+        food: String::from("Dog food"),
+        sound: String::from("Bark"),
+    };
+    let cat: Animal = Animal {
+        pet: String::from("Cat"),
+        food: String::from("Cat food"),
+        sound: String::from("Meow"),
+    };
+
+    fn print_animal_traits(pet: &impl AnimalTraits) {
+        println!("\n{}", pet.make_sound());
+        println!("{}", pet.eat())
+    }
+
+    print_animal_traits(&cat);
+    print_animal_traits(&dog);
+
+    // Note: Traits are similar to a feature often called interfaces in other languages, although with some differences.
+}
