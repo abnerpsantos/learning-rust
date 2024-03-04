@@ -111,3 +111,22 @@ pub fn about_traits() {
 
     // Note: Traits are similar to a feature often called interfaces in other languages, although with some differences.
 }
+
+pub fn about_lifetimes() {
+    println!("Lifetimes are another kind of generic that we’ve already been using.");
+    println!("Rather than ensuring that a type has the behavior we want, lifetimes ensure that references are valid as long as we need them to be.");
+
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
+
+    let result = longest(string1.as_str(), string2);
+    println!("The longest string is {}", result);
+
+    fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+        if x.len() > y.len() {
+            x
+        } else {
+            y
+        }
+    }
+}
