@@ -1,5 +1,6 @@
 pub mod lessons;
+pub mod projects;
 
 fn main() {
-    lessons::class_08_tests::about_tests();
+    projects::project_01_minigrep::run()
 }
