@@ -2,5 +2,5 @@ pub mod lessons;
 pub mod projects;
 
 fn main() {
-    projects::project_01_minigrep::run()
+    lessons::class_09_iterators_closures::about_closures();
 }
